@@ -1,2 +1,4 @@
-# poo-project
-repo to add all the files from our project
+# Referencias
+
+https://coderslegacy.com/python/python-pygame-tutorial/
+

@@ -1,24 +1,29 @@
 import pygame
 
+from constants import *
+
 class GameView:
     def __init__(self):
-        self.__width = 300
-        self.__height = 300
-        self.__display = pygame.display.set_mode((self.__width, self.__height))
-        self.__title = pygame.display.set_caption('Jogo')
+        self.__screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.__FPS = pygame.time.Clock()
 
-    def set_settings(self):
-        White = (255, 255, 255)#RGB pra branco
-        self.__display.fill(White)
+    def starting_settings(self):
+        pygame.display.set_caption(TITULO)
+        self.__screen.fill(WHITE)
 
-    def frames(self):
-        FPSnum = 30
-        self.__FPS.tick(FPSnum)
+    def paint(self):
+        #TODO - Transformar  em um background
+        self.__screen.fill(WHITE)
 
     def update(self):
         pygame.display.update()
+        self.__FPS.tick(FPS)
 
-    def set_square(self):
-        Red = (255, 0, 0)
-        pygame.draw.rect(self.__display, Red, (100, 200, 100, 50), 2)
+    def render(self, entity):
+        #TODO - Passar essa função draw para o view
+        entity.draw(self.__screen)
+        entity.move()
+
+    def end(self):
+        self.__screen.fill(RED)
+        pygame.display.update()
