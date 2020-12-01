@@ -1,6 +1,4 @@
-import pygame
 from sprites import *
-from os import path
 
 
 class GameModel:
@@ -13,7 +11,7 @@ class GameModel:
 
         self.__princess = None
 
-        self.__map_data = []
+        self.__map = []
 
     @property
     def all_sprites(self):
@@ -39,14 +37,18 @@ class GameModel:
         for row, tiles in enumerate(map.data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
-                    Unbreakable('', col, row, self)
+                    Unbreakable(col, row, self)
+                if tile == '2':
+                    Breakable(col, row, self)
                 if tile == 'P':
-                    self.__princess = Princess(self, col, row)
+                    self.__princess = Princess(col, row, self)
+                if tile == 'O':
+                    Orc(col, row, self)
 
     def update_positions(self):
         self.__all_sprites.update()
 
-        #Checa se é preciso abaixar a tela
+        #Checa se é preciso abaixar a tela TODO - Pasasr para o controle
         if self.__princess.rect.bottom >= SCREEN_HEIGHT /3:
             self.__princess.pos.y -= abs(self.__princess.vel.y)
             for tile in self.__tiles:

@@ -11,13 +11,10 @@ class GameView:
         self.__FPS = pygame.time.Clock()
         self.__font = pygame.font.SysFont("Verdana", 60)
 
-    def starting_settings(self):
-        pygame.display.set_caption(TITLE)
-        self.__screen.fill(WHITE)
-
     def draw(self):
+        pygame.display.set_caption(f"{int(self.__FPS.get_fps())}") #Trocar por titulo
         self.__FPS.tick(FPS)
-        self.__screen.fill(WHITE)
+        self.__screen.fill(BG_COLOR) #Trocar por imagem
         self.draw_grid()
         self.__GameModel.all_sprites.draw(self.__screen)
         pygame.display.flip()

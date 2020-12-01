@@ -8,6 +8,7 @@ BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 SILVER =(192,192,192)
 
+
 # Frames per second. Velocidade em que a tela atualiza.
 FPS = 30
 
@@ -24,12 +25,23 @@ SCREEN_HEIGHT = 768
 # Arquivos de imagem
 PRINCESS_IMG = 'none.png'
 ORC_IMG = 'none.png'
+UNBREAKABLE_IMG = 'none.png'
+BREAKABLE_IMG = 'none.png'
+BG_COLOR = WHITE
 
 
 # Variaveis que compoem a fisica da princesa
 PLAYER_ACC = 2
 PLAYER_FRICTION = -0.15
 PLAYER_GRAV = 0.8
+
+ENEMY_ACC = 1
+ENEMY_FRICTION = -0.15
+ENEMY_GRAV= 0.8
+
+ATTACK_LIFETIME = 300
+ATTACK_RATE = 300
+ATTACK_RANGE = 64
 
 #Tamanho dos blocos
 TILESIZE = 64
