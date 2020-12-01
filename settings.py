@@ -1,4 +1,8 @@
+from os import path
+
 # Arquivo para guardar variaveis constantes
+GAME_FOLDER = path.dirname(__file__)
+IMG_FOLDER = path.join(GAME_FOLDER, 'images')
 
 # Cores RGB
 BLUE = (0, 0, 255)
@@ -23,10 +27,10 @@ SCREEN_HEIGHT = 768
 
 
 # Arquivos de imagem
-PRINCESS_IMG = 'none.png'
-ORC_IMG = 'none.png'
-UNBREAKABLE_IMG = 'none.png'
-BREAKABLE_IMG = 'none.png'
+PRINCESS_IMG = 'princess.png'
+ORC_IMG = 'enemy_1.png'
+UNBREAKABLE_IMG = 'unbreakable_tile.png'
+BREAKABLE_IMG = 'breakable_tile.png'
 BG_COLOR = WHITE
 
 

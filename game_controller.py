@@ -26,8 +26,7 @@ class GameController:
             self.__GameView.draw()
 
     def load_data(self):
-        game_folder = path.dirname(__file__)
-        self.__map = Map(path.join(game_folder, 'map.txt'))
+        self.__map = Map(path.join(GAME_FOLDER, 'map.txt'))
 
     def events(self):
         for event in pygame.event.get():

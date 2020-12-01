@@ -1,9 +1,9 @@
 import pygame
-import random
 
 from abc import ABC, abstractmethod
 from settings import *
 from pygame.locals import *
+from os import path
 
 #Alias
 vec = pygame.math.Vector2
@@ -12,8 +12,8 @@ vec = pygame.math.Vector2
 class Character(ABC, pygame.sprite.Sprite):
     def __init__(self, image_link, width, height, position_x, position_y, model):
         super().__init__()
-        #self.__image = pygame.image.load(image_link)
-        self.__image = pygame.Surface((width, height))
+        self.__image = pygame.image.load(path.join(IMG_FOLDER, image_link)).convert_alpha()
+        self.__image = pygame.transform.scale(self.__image, (width, height))
         self.__rect = self.__image.get_rect()
         self.pos = vec(position_x, position_y)
         self.vel = vec(0,0)
@@ -43,7 +43,7 @@ class Character(ABC, pygame.sprite.Sprite):
 
 class Princess(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(PRINCESS_IMG, 52, 60, position_x * TILESIZE, position_y * TILESIZE, model)
+        super().__init__(PRINCESS_IMG, 64, 90, position_x * TILESIZE, position_y * TILESIZE, model)
         self.last_attack = 0
 
     def update(self):
@@ -94,8 +94,7 @@ class Princess(Character):
 # TODO - Criar classe Enemy
 class Orc(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(ORC_IMG, 52, 32, position_x * TILESIZE, position_y * TILESIZE, model)
-        self.image.fill(RED)
+        super().__init__(ORC_IMG, 64, 102, position_x * TILESIZE, position_y * TILESIZE, model)
         self.direction = 1
 
         self.model.enemies.add(self)
@@ -137,8 +136,8 @@ class Orc(Character):
 class Tile(ABC,pygame.sprite.Sprite):
     def __init__(self, image_link, position_x, position_y, model):
         super().__init__()
-        #self.__image = pygame.image.load(image_link)
-        self.__image = pygame.Surface((TILESIZE, TILESIZE))
+        self.__image = pygame.image.load(path.join(IMG_FOLDER, image_link)).convert_alpha()
+        self.__image = pygame.transform.scale(self.__image, (TILESIZE, TILESIZE))
         self.__rect = self.__image.get_rect()
         self.__rect.x = position_x * TILESIZE
         self.__rect.y = position_y * TILESIZE
@@ -159,13 +158,11 @@ class Tile(ABC,pygame.sprite.Sprite):
 class Unbreakable(Tile):
     def __init__(self, position_x, position_y, model):
         super().__init__(UNBREAKABLE_IMG, position_x, position_y, model)
-        self.image.fill(BLUE)
 
 
 class Breakable(Tile):
     def __init__(self, position_x, position_y, model):
         super().__init__(BREAKABLE_IMG, position_x, position_y, model)
-        self.image.fill(GREEN)
         # Adiciona o bloco como se fosse um inimigo para poder ser destrutivel
         self.model.enemies.add(self)
 
