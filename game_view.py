@@ -17,6 +17,8 @@ class GameView:
         self.__screen.fill(BG_COLOR) #Trocar por imagem
         self.draw_grid()
         self.__GameModel.all_sprites.draw(self.__screen)
+        for sprite in self.__GameModel.all_sprites:
+            pygame.draw.rect(self.__screen, RED, sprite.rect, 1)
         pygame.display.flip()
 
     def draw_grid(self):
@@ -31,3 +33,4 @@ class GameView:
         self.__screen.fill(RED)
         self.__screen.blit(game_over, game_over_rect)
         pygame.display.flip()
+
