@@ -14,7 +14,12 @@ class GameView:
     def draw(self):
         pygame.display.set_caption(f"{int(self.__FPS.get_fps())}") #Trocar por titulo
         self.__FPS.tick(FPS)
+
         self.__screen.fill(BG_COLOR) #Trocar por imagem
+        background = pygame.image.load(path.join(IMG_FOLDER, BG_IMAGE)).convert_alpha()
+        background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.__screen.blit(background, [0,0])
+        #self.__screen.blit(background, [0,255])
         self.draw_grid()
         self.__GameModel.all_sprites.draw(self.__screen)
         for sprite in self.__GameModel.all_sprites:

@@ -32,7 +32,7 @@ ORC_IMG = 'enemy_1.png'
 UNBREAKABLE_IMG = 'unbreakable_tile.png'
 BREAKABLE_IMG = 'breakable_tile.png'
 BG_COLOR = WHITE
-
+BG_IMAGE = 'background.png'
 
 # Variaveis que compoem a fisica da princesa
 PLAYER_ACC = 2
