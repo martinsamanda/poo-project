@@ -28,6 +28,10 @@ SCREEN_HEIGHT = 768
 
 # Arquivos de imagem
 PRINCESS_FOLDER = path.join(IMG_FOLDER, 'princess\\')
+ORC_FOLDER = path.join(IMG_FOLDER, 'orc\\')
+GOLEM_FOLDER = path.join(IMG_FOLDER, 'golem\\')
+
+GOLEM_IMG = 'enemy_2.png'
 ORC_IMG = 'enemy_1.png'
 UNBREAKABLE_IMG = 'unbreakable_tile.png'
 BREAKABLE_IMG = 'breakable_tile.png'
