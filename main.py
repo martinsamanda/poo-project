@@ -2,4 +2,4 @@ from game_controller import GameController
 
 controller = GameController()
 
-controller.start()
+controller.start_screen()

@@ -1,5 +1,6 @@
 import pygame
 import sys
+import time
 
 from pygame.locals import *
 from settings import *
@@ -15,20 +16,42 @@ class GameController:
         self.__GameModel = GameModel(self)
         self.__GameView = GameView(self, self.__GameModel)
         self.__map = None
+        self.score = 0
+        self.load_data()
 
-    def start(self):
+    def start_screen(self):
+        waiting = True
+        while waiting:
+            self.__GameView.draw_start_screen()
+            self.start_events()
+
+    def game_over_screen(self):
+        waiting = True
+        while waiting:
+            self.__GameView.draw_game_over()
+            for sprite in self.__GameModel.all_sprites:
+                sprite.kill()
+            self.start_events()
+
+    def start_game(self):
         self.load_data()
         self.__GameModel.load_map(self.__map)
 
-        while True:
-            self.events()
+        playing = True
+        while playing:
+            self.game_events()
             self.__GameModel.update_positions()
-            self.__GameView.draw()
+            self.__GameView.draw_game()
+
+            enemy_hits = pygame.sprite.spritecollide(self.__GameModel.princess, self.__GameModel.enemies, False, pygame.sprite.collide_mask)
+            if enemy_hits:
+                self.game_over_screen()
 
     def load_data(self):
         self.__map = Map(path.join(GAME_FOLDER, 'map.txt'))
 
-    def events(self):
+    def game_events(self):
+        # Eventos do jogo
         for event in pygame.event.get():
             if event.type == QUIT:
                 pygame.quit()
@@ -40,6 +63,14 @@ class GameController:
                 elif event.key == pygame.K_RIGHT:
                     self.__GameModel.princess.attack(ATTACK_RANGE,0)
                 elif event.key == pygame.K_UP:
-                    self.__GameModel.princess.attack(0,-ATTACK_RANGE)
+                    self.__GameModel.princess.attack(0,-ATTACK_RANGE/1.5)
                 elif event.key == pygame.K_DOWN:
-                    self.__GameModel.princess.attack(0,ATTACK_RANGE)
+                    self.__GameModel.princess.attack(0,ATTACK_RANGE/1.5)
+
+    def start_events(self):
+        for event in pygame.event.get():
+            if event.type == QUIT:
+                pygame.quit()
+                sys.exit()
+            if event.type == pygame.KEYUP:
+                self.start_game()

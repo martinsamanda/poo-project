@@ -4,11 +4,11 @@ from sprites import *
 class GameModel:
     def __init__(self, controller):
         self.__GameController = controller
-        self.__all_sprites = pygame.sprite.Group()
+        self.__all_sprites = pygame.sprite.LayeredUpdates()
         self.__characters = pygame.sprite.Group()
         self.__enemies = pygame.sprite.Group()
         self.__tiles = pygame.sprite.Group()
-
+        self.__destructive_tiles = pygame.sprite.Group()
         self.__princess = None
 
         self.__map = []
@@ -33,6 +33,14 @@ class GameModel:
     def tiles(self):
         return self.__tiles
 
+    @property
+    def destructive_tiles(self):
+        return self.__destructive_tiles
+
+    @property
+    def controller(self):
+        return self.__GameController
+
     def load_map(self, map):
         for row, tiles in enumerate(map.data):
             for col, tile in enumerate(tiles):
@@ -48,7 +56,7 @@ class GameModel:
     def update_positions(self):
         self.__all_sprites.update()
 
-        #Checa se é preciso abaixar a tela TODO - Pasasr para o controle
+        #Abaixa a tela caso passe de uma certa altura e mata os sprites que não aparecem mais
         if self.__princess.rect.bottom >= SCREEN_HEIGHT /3:
             self.__princess.pos.y -= abs(self.__princess.vel.y)
             for tile in self.__tiles:

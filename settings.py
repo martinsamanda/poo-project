@@ -10,16 +10,21 @@ RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-SILVER =(192,192,192)
+SILVER = (192,192,192)
+STRONG_RED = (194,59,34)
+SOFT_BLUE = (135, 206, 250)
+BRIGHT_BLUE = (44,62,80)
+DARK_BLUE = (52,152,219)
 
 
 # Frames per second. Velocidade em que a tela atualiza.
 FPS = 30
 
-
 # Titulo da janela do jogo.
-TITLE = 'Jogo'
+TITLE = 'A TORRE'
 
+# Fonte Usada
+FONT_NAME = 'georgia'
 
 # Tamanho da janela do jogo. Largura e altura.
 SCREEN_WIDTH = 576
@@ -28,11 +33,14 @@ SCREEN_HEIGHT = 768
 
 # Arquivos de imagem
 PRINCESS_FOLDER = path.join(IMG_FOLDER, 'princess\\')
-ORC_IMG = 'enemy_1.png'
+ORC_FOLDER = path.join(IMG_FOLDER, 'orc\\')
 UNBREAKABLE_IMG = 'unbreakable_tile.png'
 BREAKABLE_IMG = 'breakable_tile.png'
-BG_COLOR = WHITE
 
+# Ordem da layer de cada sprite
+PRINCESS_LAYER = 3
+ENEMY_LAYER = 2
+TILE_LAYER = 1
 
 # Variaveis que compoem a fisica da princesa
 PLAYER_ACC = 2
@@ -44,8 +52,8 @@ ENEMY_FRICTION = -0.15
 ENEMY_GRAV= 0.8
 
 ATTACK_LIFETIME = 300
-ATTACK_RATE = 300
-ATTACK_RANGE = 64
+ATTACK_RATE = 400
+ATTACK_RANGE = 52
 
 #Tamanho dos blocos
 TILESIZE = 64
