@@ -24,7 +24,7 @@ FPS = 30
 TITLE = 'A TORRE'
 
 # Fonte Usada
-FONT_NAME = 'georgia'
+FONT_NAME = 'Raleway Bold'
 
 # Tamanho da janela do jogo. Largura e altura.
 SCREEN_WIDTH = 576
@@ -39,6 +39,9 @@ GOLEM_IMG = 'enemy_2.png'
 UNBREAKABLE_IMG = 'unbreakable_tile.png'
 BREAKABLE_IMG = 'breakable_tile.png'
 BG_IMAGE = 'background.png'
+BG_START_SCREEN = 'start_screen.png'
+BG_GAME_OVER = 'game_over_screen.png'
+COIN_TILE_IMG = 'coin_tile.png'
 
 # Ordem da layer de cada sprite
 PRINCESS_LAYER = 3

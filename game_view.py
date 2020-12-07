@@ -24,9 +24,16 @@ class GameView:
     def draw_start_screen(self):
         self.draw_screen()
         self.__screen.fill(SOFT_BLUE)
-        self.draw_text(48, TITLE, WHITE, SCREEN_WIDTH / 2, SCREEN_HEIGHT /4)
-        self.draw_text(22, 'Use as setas para se movimentar', WHITE, SCREEN_WIDTH / 2, SCREEN_HEIGHT /2)
-        self.draw_text(22, 'Pressione qualquer tecla para começar', WHITE, SCREEN_WIDTH / 2, SCREEN_HEIGHT * 3 /4)
+
+        #Fill background com imagem estatica
+        background = pygame.image.load(path.join(IMG_FOLDER, BG_START_SCREEN)).convert_alpha()
+        background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.__screen.blit(background, (0,0))
+
+        #self.draw_text(48, TITLE, WHITE, SCREEN_WIDTH / 2, SCREEN_HEIGHT /4)
+        self.draw_text(24, 'Use as setas para se movimentar', BLACK, SCREEN_WIDTH / 2, SCREEN_HEIGHT /50)
+        self.draw_text(24, 'Pressione qualquer', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.2/8 )
+        self.draw_text(24, ' tecla para começar', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.4/8 )
         pygame.display.flip()
 
     def draw_game(self):
