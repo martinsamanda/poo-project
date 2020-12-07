@@ -359,7 +359,7 @@ class Attack(pygame.sprite.Sprite):
         #se o destrutivel for do tipo coin, aumenta score
         broken_coin_tiles = pygame.sprite.spritecollide(self, self.__model.coin_tiles, True)
         for broke in broken_coin_tiles:
-            self.__model.controller.score += 30
+            self.__model.controller.score += 5
         # Destroi o attaque apos certo tempo
         if pygame.time.get_ticks() - self.__spawn_time > ATTACK_LIFETIME:
             self.kill()
