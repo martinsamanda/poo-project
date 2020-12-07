@@ -1,0 +1,8 @@
+[] Class Enemy
+[] Class Golem
+[] Separar os arquivos pelas classes
+[] Add sons
+[] Resolver problema da princesa ficar presa qnd tem 2 blocos de altura de
+[] Inimigo cair qnd n tem bloco embaixo dele (ele corre por cima do buraco)
+[] Criar lógica de win screen
+[] Tamanho do inimigo maior que o tile
