@@ -222,6 +222,45 @@ class Orc(Character):
                 self.vel.y = 0
                 self.rect.top = wall.rect.bottom
             self.pos.y = self.rect.centery
+        
+    def load_images(self):
+        for frame_type in self.frames:
+            for file in listdir(path.join(IMG_FOLDER, f'{ORC_FOLDER}\\{frame_type}')):
+                self.frames[frame_type].append(f'{frame_type}\\{file}')
+
+    def animate(self):
+        if int(self.vel.y) != 0:
+            self.falling = True
+        else:
+            self.falling = False
+
+        if int(self.vel.x) != 0:
+            self.running = True
+        else:
+            self.running = False
+
+        if self.falling:
+            #Animação de cair
+            self.pick_frame('falling', 15)
+
+        if self.running:
+            #Animação de corrida
+            self.pick_frame('running', 30)
+
+        if not self.running and not self.falling:
+            # Animação de ficar parado
+            self.pick_frame('idle', 30)
+
+    def pick_frame(self, frame_type, frame_per_sec):
+        now = pygame.time.get_ticks()
+        if self.vel.x > 0:
+            flip = False
+        else:
+            flip = True
+        if now - self.last_update > frame_per_sec:
+            self.last_update = now
+            self.current_frame = (self.current_frame + 1) % len(self.frames[frame_type])
+            self.set_image(self.frames[frame_type][self.current_frame], flip)
 
     def animate(self):
         if int(self.vel.y) != 0:

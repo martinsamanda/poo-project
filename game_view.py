@@ -14,7 +14,12 @@ class GameView:
     def draw_screen(self):
         pygame.display.set_caption(f"{TITLE}") #Trocar por titulo
         self.__FPS.tick(FPS)
-        self.draw_background(BRIGHT_BLUE, DARK_BLUE) # TODO - Remover caso for adicionar um background
+        #Fill todo branco no fundo
+        self.__screen.fill(WHITE)
+        #Fill background com imagem estatica
+        background = pygame.image.load(path.join(IMG_FOLDER, BG_IMAGE)).convert_alpha()
+        background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.__screen.blit(background, (0,0))
 
     def draw_start_screen(self):
         self.draw_screen()
@@ -62,38 +67,3 @@ class GameView:
         text_rect = text_surface.get_rect()
         text_rect.midtop = (x, y)
         self.__screen.blit(text_surface, text_rect)
-
-    def draw_background(self, color, gradient, vertical=True, forward=True):
-        rect = self.__screen.get_rect()
-        x1, x2 = rect.left, rect.right
-        y1, y2 = rect.top, rect.bottom
-        if vertical:
-            h = y2 - y1
-        else:
-            h = x2 - x1
-        if forward:
-            a, b = color, gradient
-        else:
-            b, a = color, gradient
-        rate = (
-            float(b[0] - a[0]) / h,
-            float(b[1] - a[1]) / h,
-            float(b[2] - a[2]) / h
-        )
-        fn_line = pygame.draw.line
-        if vertical:
-            for line in range(y1, y2):
-                color = (
-                    min(max(a[0] + (rate[0] * (line - y1)), 0), 255),
-                    min(max(a[1] + (rate[1] * (line - y1)), 0), 255),
-                    min(max(a[2] + (rate[2] * (line - y1)), 0), 255)
-                )
-                fn_line(self.__screen, color, (x1, line), (x2, line))
-        else:
-            for col in range(x1, x2):
-                color = (
-                    min(max(a[0] + (rate[0] * (col - x1)), 0), 255),
-                    min(max(a[1] + (rate[1] * (col - x1)), 0), 255),
-                    min(max(a[2] + (rate[2] * (col - x1)), 0), 255)
-                )
-                fn_line(self.__screen, color, (col, y1), (col, y2))
