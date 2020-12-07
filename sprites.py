@@ -174,6 +174,7 @@ class Orc(Character):
         self.model.enemies.add(self)
 
     def update(self):
+        self.animate()
         self.acc = vec(ENEMY_ACC * self.direction, ENEMY_GRAV).rotate(self.direction)
         self.acc.x += self.vel.x * ENEMY_FRICTION
         self.vel += self.acc
@@ -212,6 +213,7 @@ class Orc(Character):
                 self.frames[frame_type].append(f'{frame_type}\\{file}')
 
     def animate(self):
+        print('animating orc')
         if int(self.vel.y) != 0:
             self.falling = True
         else:
@@ -228,6 +230,7 @@ class Orc(Character):
 
         if self.running:
             #Animação de corrida
+            print('picking')
             self.pick_frame('running', 30)
 
         if not self.running and not self.falling:
