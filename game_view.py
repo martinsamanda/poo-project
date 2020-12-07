@@ -48,9 +48,14 @@ class GameView:
     def draw_game_over(self):
         self.draw_screen()
         self.__screen.fill(STRONG_RED)
-        self.draw_text(48, 'GAME OVER', BLACK, SCREEN_WIDTH / 2, SCREEN_HEIGHT / 4)
-        self.draw_text(22, f'SCORE: {self.__GameController.score}', BLACK,  SCREEN_WIDTH / 2, SCREEN_HEIGHT /2)
-        self.draw_text(22, 'Pressione qualquer tecla para jogar novamente', BLACK, SCREEN_WIDTH / 2, SCREEN_HEIGHT * 3 / 4)
+
+        background = pygame.image.load(path.join(IMG_FOLDER, BG_GAME_OVER)).convert_alpha()
+        background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.__screen.blit(background, (0,0))
+
+        self.draw_text(72, 'GAME OVER', BLACK, SCREEN_WIDTH / 3, SCREEN_HEIGHT / 8)
+        self.draw_text(28, f'SCORE: {self.__GameController.score}', BLACK,  SCREEN_WIDTH / 3, SCREEN_HEIGHT /5)
+        self.draw_text(22, 'Pressione qualquer tecla para jogar novamente', BLACK, SCREEN_WIDTH / 2.75, SCREEN_HEIGHT * 19/21)
         pygame.display.flip()
 
     def draw_dev_tools(self):
