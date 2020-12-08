@@ -323,7 +323,13 @@ class Coin(Tile):
     def __init__(self, position_x, position_y, model):
         super().__init__(COIN_TILE_IMG, position_x, position_y, model)
         #Igual o breakable porém um dia, se tudo der certo, vai aumentar os pontos
+        #update: esse dia chegou, funcionou
         self.model.coin_tiles.add(self)
+
+class Portinha(Tile):
+    def __init__(self, position_x, position_y, model):
+        super().__init__(DOOR_TILE_IMG, position_x, position_y, model)
+        self.model.door_tile.add(self)
 
 class Attack(pygame.sprite.Sprite):
     def __init__(self, pos, model):
@@ -360,7 +366,7 @@ class Attack(pygame.sprite.Sprite):
         broken_coin_tiles = pygame.sprite.spritecollide(self, self.__model.coin_tiles, True)
         for broke in broken_coin_tiles:
             self.__model.controller.score += 5
-        # Destroi o attaque apos certo tempo
+        # Destroi o ataque apos certo tempo
         if pygame.time.get_ticks() - self.__spawn_time > ATTACK_LIFETIME:
             self.kill()
             self.__model.princess.attacking = False

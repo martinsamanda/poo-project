@@ -34,6 +34,22 @@ class GameView:
         self.draw_text(24, ' tecla para começar', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.4/8 )
         pygame.display.flip()
 
+    def draw_win_screen(self):
+        self.draw_screen()
+        self.__screen.fill(SOFT_BLUE)
+
+        background = pygame.image.load(path.join(IMG_FOLDER, BG_WIN_SCREEN)).convert_alpha()
+        background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
+        self.__screen.blit(background, (0,0))
+
+        self.draw_text(72, 'WIN', BLACK, SCREEN_WIDTH / 1.3, SCREEN_HEIGHT / 8)
+        self.draw_text(28, f'SCORE: {self.__GameController.score}', BLACK,  SCREEN_WIDTH / 1.3, SCREEN_HEIGHT /5)
+        self.draw_text(24, 'Pressione qualquer', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.3/13 )
+        self.draw_text(24, ' tecla para começar', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.6/13 )
+
+        pygame.display.flip()
+        print('saiu do draw win')
+
     def draw_game(self):
         self.draw_screen()
         self.__GameModel.all_sprites.draw(self.__screen)
@@ -55,6 +71,7 @@ class GameView:
         self.draw_text(28, f'SCORE: {self.__GameController.score}', BLACK,  SCREEN_WIDTH / 3, SCREEN_HEIGHT /5)
         self.draw_text(22, 'Pressione qualquer tecla para jogar novamente', BLACK, SCREEN_WIDTH / 2.75, SCREEN_HEIGHT * 19/21)
         pygame.display.flip()
+        print('saiu')
 
     def draw_dev_tools(self):
         #Mostra o FPS

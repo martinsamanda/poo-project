@@ -10,6 +10,7 @@ class GameModel:
         self.__tiles = pygame.sprite.Group()
         self.__destructive_tiles = pygame.sprite.Group()
         self.__coin_tiles = pygame.sprite.Group()
+        self.__door_tile = pygame.sprite.Group()
         self.__princess = None
 
         self.__map = []
@@ -41,6 +42,10 @@ class GameModel:
     @property
     def coin_tiles(self):
         return self.__coin_tiles
+    
+    @property
+    def door_tile(self):
+        return self.__door_tile
 
     @property
     def controller(self):
@@ -59,6 +64,8 @@ class GameModel:
                     Orc(col, row, self)
                 if tile == 'C':
                     Coin(col, row, self)
+                if tile == 'D':
+                    Portinha(col, row, self)
 
     def update_positions(self):
         self.__all_sprites.update()

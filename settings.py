@@ -21,7 +21,7 @@ DARK_BLUE = (52,152,219)
 FPS = 30
 
 # Titulo da janela do jogo.
-TITLE = 'A TORRE'
+TITLE = 'ONCE UPON A TOWER'
 
 # Fonte Usada
 FONT_NAME = 'Raleway Bold'
@@ -41,7 +41,9 @@ BREAKABLE_IMG = 'breakable_tile.png'
 BG_IMAGE = 'background.png'
 BG_START_SCREEN = 'start_screen.png'
 BG_GAME_OVER = 'game_over_screen.png'
+BG_WIN_SCREEN = 'win_screen.png'
 COIN_TILE_IMG = 'coin_tile.png'
+DOOR_TILE_IMG = 'end_door.png'
 
 # Ordem da layer de cada sprite
 PRINCESS_LAYER = 3
