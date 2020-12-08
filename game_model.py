@@ -69,7 +69,6 @@ class GameModel:
 
     def update_positions(self):
         self.__all_sprites.update()
-
         #Abaixa a tela caso passe de uma certa altura e mata os sprites que não aparecem mais
         if self.__princess.rect.bottom >= SCREEN_HEIGHT /3:
             self.__princess.pos.y -= abs(self.__princess.vel.y)

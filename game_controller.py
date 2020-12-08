@@ -27,22 +27,30 @@ class GameController:
 
     def game_over_screen(self):
         waiting = True
+        self.__GameView.draw_game_over()
+        #time.sleep para fazer com que a tela não desapareça mto rápido
+        #um draw antes pra paralisar na tela correta
+        time.sleep(1.1)
         while waiting:
             self.__GameView.draw_game_over()
             for sprite in self.__GameModel.all_sprites:
                 sprite.kill()
             self.start_events()
-    
+
     def win_screen(self):
         waiting = True
+        self.__GameView.draw_win_screen()
+        #time.sleep para fazer com que a tela não desapareça mto rápido
+        #um draw antes pra paralisar na tela correta
+        time.sleep(1.1)
         while waiting:
             self.__GameView.draw_win_screen()
-            print('voltou do win_screen')
             for sprite in self.__GameModel.all_sprites:
                 sprite.kill()
             self.start_events()
 
     def start_game(self):
+        self.score = 0
         self.load_data()
         self.__GameModel.load_map(self.__map)
 
@@ -53,11 +61,13 @@ class GameController:
             self.__GameView.draw_game()
 
             enemy_hits = pygame.sprite.spritecollide(self.__GameModel.princess, self.__GameModel.enemies, False, pygame.sprite.collide_mask)
-            if enemy_hits:
-                self.game_over_screen()
             door_found = pygame.sprite.spritecollide(self.__GameModel.princess, self.__GameModel.door_tile, False, pygame.sprite.collide_mask)
-            if door_found:
-                self.win_screen()
+
+            if enemy_hits or door_found:
+                if enemy_hits:
+                    self.game_over_screen()
+                if door_found:
+                    self.win_screen()
 
     def load_data(self):
         self.__map = Map(path.join(GAME_FOLDER, 'map.txt'))
