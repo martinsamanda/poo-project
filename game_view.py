@@ -48,7 +48,6 @@ class GameView:
         self.draw_text(24, ' tecla para começar', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.6/13 )
 
         pygame.display.flip()
-        print('saiu do draw win')
 
     def draw_game(self):
         self.draw_screen()
@@ -71,7 +70,6 @@ class GameView:
         self.draw_text(28, f'SCORE: {self.__GameController.score}', BLACK,  SCREEN_WIDTH / 3, SCREEN_HEIGHT /5)
         self.draw_text(22, 'Pressione qualquer tecla para jogar novamente', BLACK, SCREEN_WIDTH / 2.75, SCREEN_HEIGHT * 19/21)
         pygame.display.flip()
-        print('saiu')
 
     def draw_dev_tools(self):
         #Mostra o FPS

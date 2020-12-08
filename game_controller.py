@@ -37,7 +37,6 @@ class GameController:
         waiting = True
         while waiting:
             self.__GameView.draw_win_screen()
-            print('voltou do win_screen')
             for sprite in self.__GameModel.all_sprites:
                 sprite.kill()
             self.start_events()
