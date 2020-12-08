@@ -55,7 +55,7 @@ class GameView:
         #Adiciona informações extras a tela como um grid e o hitbox dos sprites
         self.draw_dev_tools()
         #Mostra o score
-        self.draw_text(22, f'{self.__GameController.score}', WHITE, SCREEN_WIDTH / 2, 15)
+        self.draw_text(22, f'Score: {self.__GameController.score}', DARK_BLUE, SCREEN_WIDTH / 2, 15)
         pygame.display.flip()
 
     def draw_game_over(self):
