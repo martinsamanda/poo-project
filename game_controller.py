@@ -32,6 +32,15 @@ class GameController:
             for sprite in self.__GameModel.all_sprites:
                 sprite.kill()
             self.start_events()
+    
+    def win_screen(self):
+        waiting = True
+        while waiting:
+            self.__GameView.draw_win_screen()
+            print('voltou do win_screen')
+            for sprite in self.__GameModel.all_sprites:
+                sprite.kill()
+            self.start_events()
 
     def start_game(self):
         self.load_data()
@@ -46,6 +55,9 @@ class GameController:
             enemy_hits = pygame.sprite.spritecollide(self.__GameModel.princess, self.__GameModel.enemies, False, pygame.sprite.collide_mask)
             if enemy_hits:
                 self.game_over_screen()
+            door_found = pygame.sprite.spritecollide(self.__GameModel.princess, self.__GameModel.door_tile, False, pygame.sprite.collide_mask)
+            if door_found:
+                self.win_screen()
 
     def load_data(self):
         self.__map = Map(path.join(GAME_FOLDER, 'map.txt'))
