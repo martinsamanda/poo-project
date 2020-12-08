@@ -319,6 +319,11 @@ class Breakable(Tile):
         # Adiciona o bloco como se fosse um inimigo para poder ser destrutivel
         self.model.destructive_tiles.add(self)
 
+class Coin(Tile):
+    def __init__(self, position_x, position_y, model):
+        super().__init__(COIN_TILE_IMG, position_x, position_y, model)
+        #Igual o breakable porém um dia, se tudo der certo, vai aumentar os pontos
+        self.model.coin_tiles.add(self)
 
 class Attack(pygame.sprite.Sprite):
     def __init__(self, pos, model):
@@ -349,10 +354,12 @@ class Attack(pygame.sprite.Sprite):
         enemy_hits = pygame.sprite.spritecollide(self, self.__model.enemies, True)
         for hit in enemy_hits:
             self.__model.controller.score += 10
-
         # Checa se o ataque acertou um bloco destrutivel
         pygame.sprite.spritecollide(self, self.__model.destructive_tiles, True)
-
+        #se o destrutivel for do tipo coin, aumenta score
+        broken_coin_tiles = pygame.sprite.spritecollide(self, self.__model.coin_tiles, True)
+        for broke in broken_coin_tiles:
+            self.__model.controller.score += 5
         # Destroi o attaque apos certo tempo
         if pygame.time.get_ticks() - self.__spawn_time > ATTACK_LIFETIME:
             self.kill()
