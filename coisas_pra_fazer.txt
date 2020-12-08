@@ -6,3 +6,4 @@
 [] Inimigo cair qnd n tem bloco embaixo dele (ele corre por cima do buraco)
 [X] Criar lógica de win screen
 [] Tamanho do inimigo maior que o tile
+[] fazer score zerar qnd dá restart
