@@ -10,7 +10,7 @@ class GameModel:
         self.__tiles = pygame.sprite.Group()
         self.__destructive_tiles = pygame.sprite.Group()
         self.__coin_tiles = pygame.sprite.Group()
-        self.__door_tile = pygame.sprite.Group()
+        self.__door_tile = None
         self.__princess = None
 
         self.__map = []
@@ -65,12 +65,13 @@ class GameModel:
                 if tile == 'C':
                     Coin(col, row, self)
                 if tile == 'D':
-                    Portinha(col, row, self)
+                    self.__door_tile = Portinha(col, row, self)
 
     def update_positions(self):
         self.__all_sprites.update()
         #Abaixa a tela caso passe de uma certa altura e mata os sprites que não aparecem mais
-        if self.__princess.rect.bottom >= SCREEN_HEIGHT /3:
+
+        if self.__princess.rect.bottom >= SCREEN_HEIGHT /3 and self.__door_tile.rect.bottom - self.__princess.rect.bottom > TILESIZE*6:
             self.__princess.pos.y -= abs(self.__princess.vel.y)
             for tile in self.__tiles:
                 tile.rect.y -= abs(self.__princess.vel.y)

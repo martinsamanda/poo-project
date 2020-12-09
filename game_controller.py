@@ -61,7 +61,7 @@ class GameController:
             self.__GameView.draw_game()
 
             enemy_hits = pygame.sprite.spritecollide(self.__GameModel.princess, self.__GameModel.enemies, False, pygame.sprite.collide_mask)
-            door_found = pygame.sprite.spritecollide(self.__GameModel.princess, self.__GameModel.door_tile, False, pygame.sprite.collide_mask)
+            door_found = pygame.sprite.collide_rect(self.__GameModel.princess, self.__GameModel.door_tile)
 
             if enemy_hits or door_found:
                 if enemy_hits:

@@ -12,10 +12,8 @@ class GameView:
         self.__font_name = pygame.font.match_font(FONT_NAME)
 
     def draw_screen(self):
-        pygame.display.set_caption(f"{TITLE}") #Trocar por titulo
+        pygame.display.set_caption(f"{TITLE}")
         self.__FPS.tick(FPS)
-        #Fill todo branco no fundo
-        self.__screen.fill(WHITE)
         #Fill background com imagem estatica
         background = pygame.image.load(path.join(IMG_FOLDER, BG_IMAGE)).convert_alpha()
         background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -23,7 +21,6 @@ class GameView:
 
     def draw_start_screen(self):
         self.draw_screen()
-        self.__screen.fill(SOFT_BLUE)
 
         background = pygame.image.load(path.join(IMG_FOLDER, BG_START_SCREEN)).convert_alpha()
         background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -36,7 +33,6 @@ class GameView:
 
     def draw_win_screen(self):
         self.draw_screen()
-        self.__screen.fill(SOFT_BLUE)
 
         background = pygame.image.load(path.join(IMG_FOLDER, BG_WIN_SCREEN)).convert_alpha()
         background = pygame.transform.scale(background, (SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -82,7 +78,7 @@ class GameView:
         #    pygame.draw.line(self.__screen, SILVER, (0, y), (SCREEN_WIDTH, y))
 
         #Mostra a hitbox dos personagems
-        for sprite in self.__GameModel.characters:
+        for sprite in self.__GameModel.all_sprites:
             pygame.draw.rect(self.__screen, RED, sprite.rect, 1)
         pygame.draw.rect(self.__screen, BLUE, self.__GameModel.princess.hitbox, 1)
 

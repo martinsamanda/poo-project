@@ -6,5 +6,6 @@
 [] Inimigo cair qnd n tem bloco embaixo dele (ele corre por cima do buraco)
 [X] Criar lógica de win screen
 [] Tamanho do inimigo maior que o tile
+    - Resolvido o bug de precisar de um tile extra acima da cabeça do personagem
 [X] fazer score zerar qnd dá restart
-[] Fazer tela ficar com o tile da porta na penultima linha auto
+[X] Fazer tela ficar com o tile da porta na penultima linha auto

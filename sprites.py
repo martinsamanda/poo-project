@@ -93,7 +93,7 @@ class Character(ABC, pygame.sprite.Sprite):
 
 class Princess(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(PRINCESS_FOLDER, 64, 90, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
+        super().__init__(PRINCESS_FOLDER, 60, 90, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
         self.frames['attacking'] = []
         self.load_images()
         self.last_attack = 0
@@ -125,6 +125,8 @@ class Princess(Character):
         self.rect.centerx = self.pos.x
         self.hitbox.centerx = self.pos.x
         for wall in pygame.sprite.spritecollide(self, self.model.tiles, False, self.collided):
+            if wall.rect.y < self.hitbox.y:
+                continue
             if self.vel.x > 0:
                 self.vel.x = 0.001
                 self.hitbox.right = wall.rect.left
@@ -182,9 +184,8 @@ class Princess(Character):
 # TODO - Criar classe Enemy
 class Orc(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(ORC_FOLDER, 64, 102, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
+        super().__init__(ORC_FOLDER, 64, 100, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
         self.direction = 1
-
         self.model.enemies.add(self)
 
     def update(self):
@@ -203,6 +204,8 @@ class Orc(Character):
     def wall_collisions(self):
         self.rect.centerx = self.pos.x
         for wall in pygame.sprite.spritecollide(self, self.model.tiles, False):
+            if wall.rect.y < self.rect.y:
+                continue
             if self.vel.x > 0:
                 self.vel.x = 0
                 self.direction = - self.direction
@@ -222,45 +225,6 @@ class Orc(Character):
                 self.vel.y = 0
                 self.rect.top = wall.rect.bottom
             self.pos.y = self.rect.centery
-        
-    def load_images(self):
-        for frame_type in self.frames:
-            for file in listdir(path.join(IMG_FOLDER, f'{ORC_FOLDER}\\{frame_type}')):
-                self.frames[frame_type].append(f'{frame_type}\\{file}')
-
-    def animate(self):
-        if int(self.vel.y) != 0:
-            self.falling = True
-        else:
-            self.falling = False
-
-        if int(self.vel.x) != 0:
-            self.running = True
-        else:
-            self.running = False
-
-        if self.falling:
-            #Animação de cair
-            self.pick_frame('falling', 15)
-
-        if self.running:
-            #Animação de corrida
-            self.pick_frame('running', 30)
-
-        if not self.running and not self.falling:
-            # Animação de ficar parado
-            self.pick_frame('idle', 30)
-
-    def pick_frame(self, frame_type, frame_per_sec):
-        now = pygame.time.get_ticks()
-        if self.vel.x > 0:
-            flip = False
-        else:
-            flip = True
-        if now - self.last_update > frame_per_sec:
-            self.last_update = now
-            self.current_frame = (self.current_frame + 1) % len(self.frames[frame_type])
-            self.set_image(self.frames[frame_type][self.current_frame], flip)
 
     def animate(self):
         if int(self.vel.y) != 0:
@@ -319,6 +283,7 @@ class Breakable(Tile):
         # Adiciona o bloco como se fosse um inimigo para poder ser destrutivel
         self.model.destructive_tiles.add(self)
 
+
 class Coin(Tile):
     def __init__(self, position_x, position_y, model):
         super().__init__(COIN_TILE_IMG, position_x, position_y, model)
@@ -326,10 +291,11 @@ class Coin(Tile):
         #update: esse dia chegou, funcionou
         self.model.coin_tiles.add(self)
 
+
 class Portinha(Tile):
     def __init__(self, position_x, position_y, model):
         super().__init__(DOOR_TILE_IMG, position_x, position_y, model)
-        self.model.door_tile.add(self)
+
 
 class Attack(pygame.sprite.Sprite):
     def __init__(self, pos, model):
@@ -362,7 +328,7 @@ class Attack(pygame.sprite.Sprite):
             self.__model.controller.score += 10
         # Checa se o ataque acertou um bloco destrutivel
         pygame.sprite.spritecollide(self, self.__model.destructive_tiles, True)
-        #se o destrutivel for do tipo coin, aumenta score
+        # se o destrutivel for do tipo coin, aumenta score
         broken_coin_tiles = pygame.sprite.spritecollide(self, self.__model.coin_tiles, True)
         for broke in broken_coin_tiles:
             self.__model.controller.score += 5
