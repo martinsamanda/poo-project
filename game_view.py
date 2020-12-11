@@ -29,9 +29,10 @@ class GameView:
         self.draw_text(24, 'Use as setas para se movimentar', BLACK, SCREEN_WIDTH / 2, SCREEN_HEIGHT /50)
         self.draw_text(24, 'Pressione qualquer', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.2/8 )
         self.draw_text(24, ' tecla para começar', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.4/8 )
+        self.draw_text(24, f'HIGH SCORE: {self.__GameModel.highscore.data}', BLACK, SCREEN_WIDTH /2, SCREEN_HEIGHT - 40)
         pygame.display.flip()
 
-    def draw_win_screen(self):
+    def draw_win_screen(self, new_higshcore=False):
         self.draw_screen()
 
         background = pygame.image.load(path.join(IMG_FOLDER, BG_WIN_SCREEN)).convert_alpha()
@@ -39,9 +40,13 @@ class GameView:
         self.__screen.blit(background, (0,0))
 
         self.draw_text(72, 'WIN', BLACK, SCREEN_WIDTH / 1.3, SCREEN_HEIGHT / 8)
-        self.draw_text(28, f'SCORE: {self.__GameController.score}', BLACK,  SCREEN_WIDTH / 1.3, SCREEN_HEIGHT /5)
+        self.draw_text(28, f'SCORE: {self.__GameModel.score}', BLACK,  SCREEN_WIDTH / 1.3, SCREEN_HEIGHT /5)
         self.draw_text(24, 'Pressione qualquer', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.3/13 )
         self.draw_text(24, ' tecla para começar', BLACK, SCREEN_WIDTH * 4.6/6, SCREEN_HEIGHT * 3.6/13 )
+        if new_higshcore:
+            self.draw_text(24, f'NOVO HIGH SCORE !', BLACK,  SCREEN_WIDTH / 1.3, (SCREEN_HEIGHT /5) + 20)
+        else:
+            self.draw_text(28, f'HIGH SCORE: {self.__GameModel.highscore.data}', BLACK, SCREEN_WIDTH / 1.3, (SCREEN_HEIGHT /5) + 20)
 
         pygame.display.flip()
 
@@ -51,10 +56,10 @@ class GameView:
         #Adiciona informações extras a tela como um grid e o hitbox dos sprites
         self.draw_dev_tools()
         #Mostra o score
-        self.draw_text(22, f'Score: {self.__GameController.score}', DARK_BLUE, SCREEN_WIDTH / 2, 15)
+        self.draw_text(22, f'Score: {self.__GameModel.score}', DARK_BLUE, SCREEN_WIDTH / 2, 15)
         pygame.display.flip()
 
-    def draw_game_over(self):
+    def draw_game_over(self, new_higshcore=False):
         self.draw_screen()
         self.__screen.fill(STRONG_RED)
 
@@ -63,8 +68,12 @@ class GameView:
         self.__screen.blit(background, (0,0))
 
         self.draw_text(72, 'GAME OVER', BLACK, SCREEN_WIDTH / 3, SCREEN_HEIGHT / 8)
-        self.draw_text(28, f'SCORE: {self.__GameController.score}', BLACK,  SCREEN_WIDTH / 3, SCREEN_HEIGHT /5)
+        self.draw_text(28, f'SCORE: {self.__GameModel.score}', BLACK,  SCREEN_WIDTH / 3, SCREEN_HEIGHT /5)
         self.draw_text(22, 'Pressione qualquer tecla para jogar novamente', BLACK, SCREEN_WIDTH / 2.75, SCREEN_HEIGHT * 19/21)
+        if new_higshcore:
+            self.draw_text(24, f'NOVO HIGH SCORE !', BLACK,  SCREEN_WIDTH / 3, (SCREEN_HEIGHT /5) + 20)
+        else:
+            self.draw_text(28, f'HIGH SCORE: {self.__GameModel.highscore.data}', BLACK, SCREEN_WIDTH / 3, (SCREEN_HEIGHT /5) + 25)
         pygame.display.flip()
 
     def draw_dev_tools(self):

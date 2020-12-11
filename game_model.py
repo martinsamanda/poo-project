@@ -1,4 +1,5 @@
 from sprites import *
+from persistence import Map, Highscore
 
 
 class GameModel:
@@ -13,6 +14,8 @@ class GameModel:
         self.__door_tile = None
         self.__princess = None
 
+        self.score = 0
+        self.__highscore = Highscore()
         self.__map = []
 
     @property
@@ -51,8 +54,13 @@ class GameModel:
     def controller(self):
         return self.__GameController
 
-    def load_map(self, map):
-        for row, tiles in enumerate(map.data):
+    @property
+    def highscore(self):
+        return self.__highscore
+
+    def load_map(self):
+        self.__map = Map()
+        for row, tiles in enumerate(self.__map.data):
             for col, tile in enumerate(tiles):
                 if tile == '1':
                     Unbreakable(col, row, self)

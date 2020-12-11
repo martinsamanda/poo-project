@@ -32,9 +32,9 @@ SCREEN_HEIGHT = 768
 
 
 # Arquivos de imagem
-PRINCESS_FOLDER = path.join(IMG_FOLDER, 'princess\\')
-ORC_FOLDER = path.join(IMG_FOLDER, 'orc\\')
-GOLEM_FOLDER = path.join(IMG_FOLDER, 'golem\\')
+PRINCESS_FOLDER = path.join(IMG_FOLDER, 'princess/')
+ORC_FOLDER = path.join(IMG_FOLDER, 'orc/')
+GOLEM_FOLDER = path.join(IMG_FOLDER, 'golem/')
 GOLEM_IMG = 'enemy_2.png'
 UNBREAKABLE_IMG = 'unbreakable_tile.png'
 BREAKABLE_IMG = 'breakable_tile.png'
@@ -44,6 +44,8 @@ BG_GAME_OVER = 'game_over_screen.png'
 BG_WIN_SCREEN = 'win_screen.png'
 COIN_TILE_IMG = 'coin_tile.png'
 DOOR_TILE_IMG = 'end_door.png'
+MAP_FILE = 'map.txt'
+HS_FILE = 'highscore.txt'
 
 # Ordem da layer de cada sprite
 PRINCESS_LAYER = 3

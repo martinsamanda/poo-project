@@ -6,7 +6,7 @@ import sys
 
 def crop(png_image_name, folderName):
     script_path = path.dirname(path.abspath(__file__))
-    image_path = f'{script_path}\\{folderName}\\{png_image_name}'
+    image_path = f'{script_path}/{folderName}/{png_image_name}'
     im = Image.open(image_path)
     #width, height = im.size
     #box_size = im.getbbox()

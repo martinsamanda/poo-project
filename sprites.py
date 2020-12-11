@@ -58,8 +58,8 @@ class Character(ABC, pygame.sprite.Sprite):
 
     def load_images(self):
         for frame_type in self.frames:
-            for file in listdir(path.join(IMG_FOLDER, f'{self.__character_folder}\\{frame_type}')):
-                self.frames[frame_type].append(f'{frame_type}\\{file}')
+            for file in listdir(path.join(IMG_FOLDER, f'{self.__character_folder}/{frame_type}')):
+                self.frames[frame_type].append(f'{frame_type}/{file}')
 
     def pick_frame(self, frame_type, frame_per_sec):
         now = pygame.time.get_ticks()
@@ -184,7 +184,7 @@ class Princess(Character):
 # TODO - Criar classe Enemy
 class Orc(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(ORC_FOLDER, 64, 100, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
+        super().__init__(ORC_FOLDER, 64, 110, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
         self.direction = 1
         self.model.enemies.add(self)
 
@@ -325,13 +325,13 @@ class Attack(pygame.sprite.Sprite):
         # Checa se o ataque acertou algum inimigo e aumenta o score
         enemy_hits = pygame.sprite.spritecollide(self, self.__model.enemies, True)
         for hit in enemy_hits:
-            self.__model.controller.score += 10
+            self.__model.score += 10
         # Checa se o ataque acertou um bloco destrutivel
         pygame.sprite.spritecollide(self, self.__model.destructive_tiles, True)
         # se o destrutivel for do tipo coin, aumenta score
         broken_coin_tiles = pygame.sprite.spritecollide(self, self.__model.coin_tiles, True)
         for broke in broken_coin_tiles:
-            self.__model.controller.score += 5
+            self.__model.score += 5
         # Destroi o ataque apos certo tempo
         if pygame.time.get_ticks() - self.__spawn_time > ATTACK_LIFETIME:
             self.kill()

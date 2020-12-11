@@ -6,8 +6,6 @@ from pygame.locals import *
 from settings import *
 from game_view import GameView
 from game_model import GameModel
-from tilemap import Map
-from os import path
 
 
 class GameController:
@@ -15,9 +13,6 @@ class GameController:
         pygame.init()
         self.__GameModel = GameModel(self)
         self.__GameView = GameView(self, self.__GameModel)
-        self.__map = None
-        self.score = 0
-        self.load_data()
 
     def start_screen(self):
         waiting = True
@@ -27,32 +22,41 @@ class GameController:
 
     def game_over_screen(self):
         waiting = True
-        self.__GameView.draw_game_over()
+        new_highscore = False
+        if self.__GameModel.score > self.__GameModel.highscore.data:
+            self.__GameModel.highscore.new_hs(self.__GameModel.score)
+            new_highscore = True
+
+        self.__GameView.draw_game_over(new_highscore)
         #time.sleep para fazer com que a tela não desapareça mto rápido
         #um draw antes pra paralisar na tela correta
         time.sleep(1.1)
         while waiting:
-            self.__GameView.draw_game_over()
+            self.__GameView.draw_game_over(new_highscore)
             for sprite in self.__GameModel.all_sprites:
                 sprite.kill()
             self.start_events()
 
     def win_screen(self):
         waiting = True
-        self.__GameView.draw_win_screen()
+        new_highscore = False
+        if self.__GameModel.score > self.__GameModel.highscore.data:
+            self.__GameModel.highscore.new_hs(self.__GameModel.score)
+            new_highscore = True
+
+        self.__GameView.draw_win_screen(new_highscore)
         #time.sleep para fazer com que a tela não desapareça mto rápido
         #um draw antes pra paralisar na tela correta
         time.sleep(1.1)
         while waiting:
-            self.__GameView.draw_win_screen()
+            self.__GameView.draw_win_screen(new_highscore)
             for sprite in self.__GameModel.all_sprites:
                 sprite.kill()
             self.start_events()
 
     def start_game(self):
-        self.score = 0
-        self.load_data()
-        self.__GameModel.load_map(self.__map)
+        self.__GameModel.score = 0
+        self.__GameModel.load_map()
 
         playing = True
         while playing:
@@ -68,9 +72,6 @@ class GameController:
                     self.game_over_screen()
                 if door_found:
                     self.win_screen()
-
-    def load_data(self):
-        self.__map = Map(path.join(GAME_FOLDER, 'map.txt'))
 
     def game_events(self):
         # Eventos do jogo
