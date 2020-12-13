@@ -2,6 +2,7 @@ from abc import ABC, abstractmethod
 from os import path, listdir
 
 import pygame
+from pygame import mixer
 from pygame.locals import *
 from settings import *
 
@@ -34,6 +35,9 @@ class Attack(pygame.sprite.Sprite):
         # Checa se o ataque acertou algum inimigo e aumenta o score
         enemy_hits = pygame.sprite.spritecollide(self, self.__model.enemies, True)
         for hit in enemy_hits:
+            pygame.mixer.init()
+            princesshit = mixer.Sound(path.join(SOUNDS_FOLDER, PRINCESS_HITTING))
+            princesshit.play()
             self.__model.score += 10
         # Checa se o ataque acertou um bloco destrutivel
         pygame.sprite.spritecollide(self, self.__model.destructive_tiles, True)
