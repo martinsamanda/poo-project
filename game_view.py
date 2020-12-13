@@ -87,9 +87,9 @@ class GameView:
         #    pygame.draw.line(self.__screen, SILVER, (0, y), (SCREEN_WIDTH, y))
 
         #Mostra a hitbox dos personagems
-        for sprite in self.__GameModel.all_sprites:
+        '''for sprite in self.__GameModel.all_sprites:
             pygame.draw.rect(self.__screen, RED, sprite.rect, 1)
-        pygame.draw.rect(self.__screen, BLUE, self.__GameModel.princess.hitbox, 1)
+        pygame.draw.rect(self.__screen, BLUE, self.__GameModel.princess.hitbox, 1)'''
 
     def draw_text(self, size, text, color, x, y):
         font = pygame.font.Font(self.__font_name, size)
