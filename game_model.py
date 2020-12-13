@@ -3,7 +3,7 @@ from enemy import Enemy
 from orc import Orc
 from character import Character
 from golem import Golem
-from tile import *
+from tiles import *
 from persistence import Map, Highscore
 import pygame
 from pygame.locals import *
@@ -87,7 +87,7 @@ class GameModel:
         self.__all_sprites.update()
         #Abaixa a tela caso passe de uma certa altura e mata os sprites que não aparecem mais
 
-        if self.__princess.rect.bottom >= SCREEN_HEIGHT /3 and self.__door_tile.rect.bottom - self.__princess.rect.bottom > TILESIZE*6:
+        if self.__princess.rect.bottom >= SCREEN_HEIGHT /3 and self.__door_tile.rect.bottom - self.__princess.rect.bottom > TILESIZE/2:
             self.__princess.pos.y -= abs(self.__princess.vel.y)
             for tile in self.__tiles:
                 tile.rect.y -= abs(self.__princess.vel.y)
