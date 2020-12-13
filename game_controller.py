@@ -6,7 +6,7 @@ from pygame.locals import *
 from settings import *
 from game_view import GameView
 from game_model import GameModel
-#from sounds import Sound
+from sounds import Sound
 
 
 class GameController:
@@ -14,15 +14,18 @@ class GameController:
         pygame.init()
         self.__GameModel = GameModel(self)
         self.__GameView = GameView(self, self.__GameModel)
-        #self.__sounds = Sound()
+        self.__sounds = Sound()
 
     def start_screen(self):
+        self.__sounds.princess_hit_sound()
+        self.__sounds.background_sound()
         waiting = True
         while waiting:
             self.__GameView.draw_start_screen()
             self.start_events()
 
     def game_over_screen(self):
+        self.__sounds.orc_sound()
         waiting = True
         new_highscore = False
         if self.__GameModel.score > self.__GameModel.highscore.data:
