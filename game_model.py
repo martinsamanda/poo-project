@@ -1,8 +1,10 @@
 from princess import Princess
 from enemy import Enemy
 from orc import Orc
-from character import Character
 from golem import Golem
+from black_golem import BlackGolem
+from white_golem import WhiteGolem
+from character import Character
 from tiles import *
 from persistence import Map, Highscore
 import pygame
@@ -78,6 +80,12 @@ class GameModel:
                     self.__princess = Princess(col, row, self)
                 if tile == 'O':
                     Orc(col, row, self)
+                if tile == 'G':
+                    Golem(col, row, self)
+                if tile == 'B':
+                    BlackGolem(col, row, self)   
+                if tile == 'W':
+                    WhiteGolem(col, row, self)
                 if tile == 'C':
                     Coin(col, row, self)
                 if tile == 'D':
@@ -97,4 +105,3 @@ class GameModel:
     def end(self):
         for sprite in self.__all_sprites:
             sprite.kill()
-
