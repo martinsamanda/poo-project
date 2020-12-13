@@ -93,11 +93,13 @@ class Character(ABC, pygame.sprite.Sprite):
 
 class Princess(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(PRINCESS_FOLDER, 60, 90, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
+        super().__init__(PRINCESS_FOLDER, 60, 64, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
         self.frames['attacking'] = []
         self.load_images()
         self.last_attack = 0
+        self.last_jump = 0
         self.attacking = False
+        self.jumping = False
         self.hitbox = self.rect.copy()
 
     def update(self):
@@ -109,6 +111,9 @@ class Princess(Character):
             self.acc.x = PLAYER_ACC
         if pressed_key[K_LEFT]:
             self.acc.x = -PLAYER_ACC
+        if pressed_key[K_UP]:
+            self.jump()
+            
 
         #Aplica fricção
         self.acc.x += self.vel.x * PLAYER_FRICTION
@@ -128,7 +133,7 @@ class Princess(Character):
             if wall.rect.y < self.hitbox.y:
                 continue
             if self.vel.x > 0:
-                self.vel.x = 0.001
+                self.vel.x = 0
                 self.hitbox.right = wall.rect.left
             elif self.vel.x < 0:
                 self.vel.x = 0
@@ -180,11 +185,17 @@ class Princess(Character):
             dir = self.pos + vec(x, y)
             Attack(dir, self.model)
 
+    def jump(self):
+        now = pygame.time.get_ticks()
+        if now - self.last_jump > JUMP_LIFETIME:
+            self.last_jump = now
+            self.jumping = True
+            self.acc.y = -PLAYER_ACC*5
 
 # TODO - Criar classe Enemy
 class Orc(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(ORC_FOLDER, 64, 110, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
+        super().__init__(ORC_FOLDER, 64, 64, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
         self.direction = 1
         self.model.enemies.add(self)
 
