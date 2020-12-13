@@ -1,5 +1,13 @@
-from sprites import *
+from princess import Princess
+from enemy import Enemy
+from orc import Orc
+from character import Character
+from golem import Golem
+from tile import *
 from persistence import Map, Highscore
+import pygame
+from pygame.locals import *
+from settings import *
 
 
 class GameModel:

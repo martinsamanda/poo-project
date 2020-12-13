@@ -3,6 +3,7 @@ from os import path
 # Arquivo para guardar variaveis constantes
 GAME_FOLDER = path.dirname(__file__)
 IMG_FOLDER = path.join(GAME_FOLDER, 'images')
+SOUNDS_FOLDER = path.join(GAME_FOLDER, 'sounds')
 
 # Cores RGB
 BLUE = (0, 0, 255)
@@ -46,6 +47,8 @@ COIN_TILE_IMG = 'coin_tile.png'
 DOOR_TILE_IMG = 'end_door.png'
 MAP_FILE = 'map.txt'
 HS_FILE = 'highscore.txt'
+BACKGROUND_SOUND = 'bensound-creepy.ogg'
+PRINCESS_HITTING = 'knifesharpener2.ogg'
 
 # Ordem da layer de cada sprite
 PRINCESS_LAYER = 3
@@ -55,7 +58,7 @@ TILE_LAYER = 1
 # Variaveis que compoem a fisica da princesa
 PLAYER_ACC = 2
 PLAYER_FRICTION = -0.15
-PLAYER_GRAV = 0.8
+PLAYER_GRAV = 2
 
 ENEMY_ACC = 1
 ENEMY_FRICTION = -0.15
