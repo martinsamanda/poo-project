@@ -2,6 +2,7 @@ from character import Character
 from os import path, listdir
 
 import pygame
+from pygame import mixer
 from pygame.locals import *
 from settings import *
 from attack import Attack
@@ -11,7 +12,7 @@ vec = pygame.math.Vector2
 
 class Princess(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(PRINCESS_FOLDER, 60, 90, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
+        super().__init__(PRINCESS_FOLDER, 60, 85, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
         self.frames['attacking'] = []
         self.load_images()
         self.last_attack = 0
@@ -43,7 +44,7 @@ class Princess(Character):
         self.rect.centerx = self.pos.x
         self.hitbox.centerx = self.pos.x
         for wall in pygame.sprite.spritecollide(self, self.model.tiles, False, self.collided):
-            if wall.rect.y < self.hitbox.y:
+            if wall.rect.top < self.rect.top:
                 continue
             if self.vel.x > 0:
                 self.vel.x = 0.001

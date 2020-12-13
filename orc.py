@@ -10,7 +10,7 @@ vec = pygame.math.Vector2
 # TODO - Criar classe Enemy
 class Orc(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(ORC_FOLDER, 64, 110, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
+        super().__init__(ORC_FOLDER, 64, 90, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
         self.direction = 1
         self.model.enemies.add(self)
 
