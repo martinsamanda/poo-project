@@ -125,10 +125,10 @@ class Princess(Character):
         self.rect.centerx = self.pos.x
         self.hitbox.centerx = self.pos.x
         for wall in pygame.sprite.spritecollide(self, self.model.tiles, False, self.collided):
-            if wall.rect.y < self.hitbox.y:
+            if wall.rect.top < self.rect.top:
                 continue
             if self.vel.x > 0:
-                self.vel.x = 0.001
+                self.vel.x = 0
                 self.hitbox.right = wall.rect.left
             elif self.vel.x < 0:
                 self.vel.x = 0
