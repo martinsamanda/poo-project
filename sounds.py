@@ -15,9 +15,7 @@ class Sound:
     def princess_hit_sound(self):
         princesshit = mixer.Sound(path.join(SOUNDS_FOLDER, PRINCESS_HITTING))
         princesshit.play()
-        self.background_sound()
     
     def orc_sound(self):
         orc_sound = mixer.Sound(path.join(SOUNDS_FOLDER, ORC_SOUND))
         orc_sound.play()
-        self.background_sound()
