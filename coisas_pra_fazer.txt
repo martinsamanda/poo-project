@@ -2,7 +2,15 @@
 [] Class Golem
 [] Separar os arquivos pelas classes
 [] Add sons
-[] Resolver problema da princesa ficar presa qnd tem 2 blocos de altura de
+[X] Resolver problema da princesa ficar presa qnd tem menos de um bloco de diferença entre ela e o bloco de cima:
+      - Basicamente o programa detecta uma colisão entre a princesa e o bloco de cima quando esse bloco tem menos 
+      de um bloco de diferença entre ele e a princesa. 
+      
+      A colisão é tratada no wall_colisions() da princesa, dentro do arquivo do sprites;
+
+      A forma que encontramos de tratar esse erro é sempre deixar mais de um bloco de distância entre a princesa e o 
+      'teto' no desenho do mapa.
+
 [] Inimigo cair qnd n tem bloco embaixo dele (ele corre por cima do buraco)
 [X] Criar lógica de win screen
 [] Tamanho do inimigo maior que o tile
