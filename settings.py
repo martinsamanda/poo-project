@@ -49,6 +49,7 @@ MAP_FILE = 'map.txt'
 HS_FILE = 'highscore.txt'
 BACKGROUND_SOUND = 'bensound-creepy.ogg'
 PRINCESS_HITTING = 'knifesharpener2.ogg'
+ORC_SOUND = 'Male-Zombie-Roar.ogg'
 
 # Ordem da layer de cada sprite
 PRINCESS_LAYER = 3
@@ -58,11 +59,11 @@ TILE_LAYER = 1
 # Variaveis que compoem a fisica da princesa
 PLAYER_ACC = 2
 PLAYER_FRICTION = -0.15
-PLAYER_GRAV = 2
+PLAYER_GRAV = 2.5
 
 ENEMY_ACC = 1
 ENEMY_FRICTION = -0.15
-ENEMY_GRAV= 0.8
+ENEMY_GRAV= 10
 
 ATTACK_LIFETIME = 300
 ATTACK_RATE = 400
