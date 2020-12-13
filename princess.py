@@ -12,7 +12,7 @@ vec = pygame.math.Vector2
 
 class Princess(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(PRINCESS_FOLDER, 60, 85, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
+        super().__init__(PRINCESS_FOLDER, 40, 85, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
         self.frames['attacking'] = []
         self.load_images()
         self.last_attack = 0
@@ -44,7 +44,7 @@ class Princess(Character):
         self.rect.centerx = self.pos.x
         self.hitbox.centerx = self.pos.x
         for wall in pygame.sprite.spritecollide(self, self.model.tiles, False, self.collided):
-            if wall.rect.top < self.rect.top:
+            if wall.rect.y < self.hitbox.y:
                 continue
             if self.vel.x > 0:
                 self.vel.x = 0.001
