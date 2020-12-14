@@ -94,13 +94,16 @@ class GameModel:
     def update_positions(self):
         self.__all_sprites.update()
         #Abaixa a tela caso passe de uma certa altura e mata os sprites que não aparecem mais
-
         if self.__princess.rect.bottom >= SCREEN_HEIGHT /3 and self.__door_tile.rect.bottom - self.__princess.rect.bottom > TILESIZE/2:
             self.__princess.pos.y -= abs(self.__princess.vel.y)
             for tile in self.__tiles:
                 tile.rect.y -= abs(self.__princess.vel.y)
                 if tile.rect.bottom < 0:
                     tile.kill()
+            for enemy in self.__enemies:
+                enemy.rect.y -= abs(self.__princess.vel.y)
+                if enemy.rect.bottom < 0:
+                    enemy.kill()
 
     def end(self):
         for sprite in self.__all_sprites:
