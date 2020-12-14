@@ -12,7 +12,7 @@ vec = pygame.math.Vector2
 
 class Princess(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(PRINCESS_FOLDER, 40, 85, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
+        super().__init__(PRINCESS_FOLDER, 40, 64, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
         self.frames['attacking'] = []
         self.load_images()
         self.last_attack = 0
