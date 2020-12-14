@@ -29,6 +29,9 @@ class Tile(ABC, pygame.sprite.Sprite):
     def image(self):
         return self.__image
 
+    @property
+    def destroy(self):
+        self.kill()
 
 class Unbreakable(Tile):
     def __init__(self, position_x, position_y, model):

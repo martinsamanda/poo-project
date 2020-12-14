@@ -5,7 +5,7 @@ from sprites.golem import Golem
 from sprites.black_golem import BlackGolem
 from sprites.white_golem import WhiteGolem
 from sprites.character import Character
-from sprites.tiles import *
+from sprites.tiles.tiles import *
 from persistence import Map, Highscore
 import pygame
 from pygame.locals import *
@@ -100,10 +100,6 @@ class GameModel:
                 tile.rect.y -= abs(self.__princess.vel.y)
                 if tile.rect.bottom < 0:
                     tile.kill()
-            for enemy in self.__enemies:
-                enemy.rect.y -= abs(self.__princess.vel.y)
-                if enemy.rect.bottom < 0:
-                    enemy.kill()
 
 
     def end(self):

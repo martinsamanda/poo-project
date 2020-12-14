@@ -44,6 +44,8 @@ class Attack(pygame.sprite.Sprite):
         # se o destrutivel for do tipo coin, aumenta score
         broken_coin_tiles = pygame.sprite.spritecollide(self, self.__model.coin_tiles, True)
         for broke in broken_coin_tiles:
+            coin_sound = mixer.Sound(path.join('sprites', 'tiles', 'sounds', 'coin.wav'))
+            coin_sound.play()
             self.__model.score += 5
         # Destroi o ataque apos certo tempo
         if pygame.time.get_ticks() - self.__spawn_time > ATTACK_LIFETIME:
