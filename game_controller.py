@@ -84,16 +84,6 @@ class GameController:
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()
-            if event.type == pygame.KEYDOWN:
-                #Eventos para spawnar os ataques da princesa
-                if event.key == pygame.K_LEFT:
-                    self.__GameModel.princess.attack(-ATTACK_RANGE,0)
-                elif event.key == pygame.K_RIGHT:
-                    self.__GameModel.princess.attack(ATTACK_RANGE,0)
-                elif event.key == pygame.K_UP:
-                    self.__GameModel.princess.attack(0,-ATTACK_RANGE/1.5)
-                elif event.key == pygame.K_DOWN:
-                    self.__GameModel.princess.attack(0,ATTACK_RANGE/1.5)
 
     def start_events(self):
         #self.__sounds.background_sound()

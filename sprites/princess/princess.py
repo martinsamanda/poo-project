@@ -29,11 +29,17 @@ class Princess(Character):
         pressed_key = pygame.key.get_pressed()
 
         if pressed_key[K_RIGHT]:
+            self.attack(ATTACK_RANGE,0)
             self.acc.x = PLAYER_ACC
             princess_walk.play()
         if pressed_key[K_LEFT]:
+            self.attack(-ATTACK_RANGE,0)
             self.acc.x = -PLAYER_ACC
             princess_walk.play()
+        if pressed_key[K_UP]:
+            self.attack(0,-ATTACK_RANGE/1.5)
+        if pressed_key[K_DOWN]:
+            self.attack(0,ATTACK_RANGE/1.5)
 
         #Aplica fricção
         self.acc.x += self.vel.x * PLAYER_FRICTION
