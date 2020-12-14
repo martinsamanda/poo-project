@@ -4,7 +4,7 @@ from sprites.orc import Orc
 from sprites.golem import Golem
 from sprites.black_golem import BlackGolem
 from sprites.white_golem import WhiteGolem
-from sprites.character import Character
+# from sprites.character import Character
 from sprites.tiles.tiles import *
 from persistence import Map, Highscore
 import pygame
@@ -23,6 +23,7 @@ class GameModel:
         self.__coin_tiles = pygame.sprite.Group()
         self.__door_tile = None
         self.__princess = None
+        
 
         self.score = 0
         self.__highscore = Highscore()
@@ -35,6 +36,7 @@ class GameModel:
     @property
     def princess(self):
         return self.__princess
+
 
     @property
     def enemies(self):
