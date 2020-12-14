@@ -103,3 +103,4 @@ class GameController:
                 sys.exit()
             if event.type == pygame.KEYUP:
                 self.start_game()
+GameController().start_game()

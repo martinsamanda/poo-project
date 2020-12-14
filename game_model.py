@@ -1,11 +1,11 @@
-from princess import Princess
-from enemy import Enemy
-from orc import Orc
-from golem import Golem
-from black_golem import BlackGolem
-from white_golem import WhiteGolem
-from character import Character
-from tiles import *
+from sprites.princess import Princess
+from sprites.enemy import Enemy
+from sprites.orc import Orc
+from sprites.golem import Golem
+from sprites.black_golem import BlackGolem
+from sprites.white_golem import WhiteGolem
+from sprites.character import Character
+from sprites.tiles import *
 from persistence import Map, Highscore
 import pygame
 from pygame.locals import *
