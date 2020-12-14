@@ -1,4 +1,4 @@
-from sprites.princess import Princess
+from sprites.princess.princess import Princess
 from sprites.enemy import Enemy
 from sprites.orc import Orc
 from sprites.golem import Golem

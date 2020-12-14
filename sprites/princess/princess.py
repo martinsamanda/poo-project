@@ -7,7 +7,10 @@ from pygame.locals import *
 from settings import *
 from attack import Attack
 
+# adicionando os arquivos de som
 vec = pygame.math.Vector2
+pygame.mixer.init()
+princess_walk = mixer.Sound(path.join('sprites', 'princess', 'sounds', 'walk.wav'))
 
 
 class Princess(Character):
@@ -18,6 +21,7 @@ class Princess(Character):
         self.last_attack = 0
         self.attacking = False
         self.hitbox = self.rect.copy()
+        
 
     def update(self):
         self.animate()
@@ -26,8 +30,10 @@ class Princess(Character):
 
         if pressed_key[K_RIGHT]:
             self.acc.x = PLAYER_ACC
+            princess_walk.play()
         if pressed_key[K_LEFT]:
             self.acc.x = -PLAYER_ACC
+            princess_walk.play()
 
         #Aplica fricção
         self.acc.x += self.vel.x * PLAYER_FRICTION
