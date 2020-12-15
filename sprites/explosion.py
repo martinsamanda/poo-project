@@ -5,8 +5,11 @@ from pygame.locals import *
 from settings import *
 vec = pygame.math.Vector2
 
+class Explosion:
+    def __init__(self):
+        pass
 
-explosion_animation = {}
+'''explosion_animation = {}
 explosion_animation['lg'] = []
 explosion_animation['sm'] = []
 for i in range(9):
@@ -40,5 +43,5 @@ class Explosion(pygame.sprite.Sprite):
           center = self.rect.center
           self.image = explosion_animation[self.size][self.frame]
           self.rect = self.image.get_rect()
-          self.rect.center = center
+          self.rect.center = center'''
     
