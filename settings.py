@@ -32,20 +32,17 @@ SCREEN_WIDTH = 576
 SCREEN_HEIGHT = 768
 
 
-# Arquivos de imagem
-PRINCESS_FOLDER = path.join(IMG_FOLDER, 'princess/')
-ORC_FOLDER = path.join(IMG_FOLDER, 'orc/')
-GOLEM_FOLDER = path.join(IMG_FOLDER, 'golem/')
-WHITE_GOLEM_FOLDER = path.join(IMG_FOLDER, 'white_golem/')
-BLACK_GOLEM_FOLDER = path.join(IMG_FOLDER, 'black_golem/')
+# Arquivos de imagem 
+#  --- usados nos tiles
+COIN_TILE_IMG = 'coin_tile.png'
+DOOR_TILE_IMG = 'end_door.png'
 UNBREAKABLE_IMG = 'unbreakable_tile.png'
 BREAKABLE_IMG = 'breakable_tile.png'
+#  --- arquivos gerais
 BG_IMAGE = 'background.png'
 BG_START_SCREEN = 'start_screen.png'
 BG_GAME_OVER = 'game_over_screen.png'
 BG_WIN_SCREEN = 'win_screen.png'
-COIN_TILE_IMG = 'coin_tile.png'
-DOOR_TILE_IMG = 'end_door.png'
 MAP_FILE = 'map.txt'
 HS_FILE = 'highscore.txt'
 BACKGROUND_SOUND = 'bensound-creepy.ogg'

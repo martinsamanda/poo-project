@@ -4,7 +4,6 @@ from os import path, listdir
 import pygame
 from pygame.locals import *
 from settings import *
-from attack import Attack
 vec = pygame.math.Vector2
 
 class Enemy(Character):

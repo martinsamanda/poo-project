@@ -1,21 +1,23 @@
-from sprites.character import Character
 from os import path, listdir
-
 import pygame
 from pygame import mixer
+
 from pygame.locals import *
 from settings import *
-from attack import Attack
+
+from sprites.character import Character
+from sprites.attack.attack import Attack
+vec = pygame.math.Vector2
+
 
 # adicionando os arquivos de som
-vec = pygame.math.Vector2
 #pygame.mixer.init()
 #princess_atack = mixer.Sound(path.join('sprites', 'princess', 'sounds', 'atack.wav'))
 
 
 class Princess(Character):
     def __init__(self, position_x, position_y, model):
-        super().__init__(PRINCESS_FOLDER, 40, 64, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
+        super().__init__(path.join('sprites/', 'princess/', 'images/'), 40, 64, position_x * TILESIZE, position_y * TILESIZE, model, PRINCESS_LAYER)
         self.frames['attacking'] = []
         self.load_images()
         self.last_attack = 0
@@ -43,6 +45,7 @@ class Princess(Character):
 
         #Aplica fricção
         self.acc.x += self.vel.x * PLAYER_FRICTION
+        
         #Equações de velocidade e deslocamento
         self.vel += self.acc
         self.pos += self.vel + 0.5 * self.acc
