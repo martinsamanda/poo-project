@@ -54,8 +54,8 @@ class Attack(pygame.sprite.Sprite):
         broken_coin_tiles = pygame.sprite.spritecollide(self, self.__model.coin_tiles, True)
         for broke in broken_coin_tiles:
             # toca o som
-            #coin_sound = mixer.Sound(path.join('sprites', 'tiles', 'sounds', 'coin.wav'))
-            #coin_sound.play()
+            coin_sound = mixer.Sound(path.join('sprites', 'tiles', 'sounds', 'coin.wav'))
+            coin_sound.play()
 
             # spawna a explosão 
             expl = Explosion(broke.rect.center, 'sm')
