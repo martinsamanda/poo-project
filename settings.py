@@ -32,12 +32,7 @@ SCREEN_WIDTH = 576
 SCREEN_HEIGHT = 768
 
 
-# Arquivos de imagem
-PRINCESS_FOLDER = path.join(IMG_FOLDER,  'princess/')
-ORC_FOLDER = path.join(IMG_FOLDER, 'orc/')
-GOLEM_FOLDER = path.join(IMG_FOLDER, 'golem/')
-# WHITE_GOLEM_FOLDER = path.join(IMG_FOLDER, 'white_golem/')
-BLACK_GOLEM_FOLDER = path.join(IMG_FOLDER, 'black_golem/')
+# Arquivos de imagem 
 UNBREAKABLE_IMG = 'unbreakable_tile.png'
 BREAKABLE_IMG = 'breakable_tile.png'
 BG_IMAGE = 'background.png'
