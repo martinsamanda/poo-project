@@ -1,5 +1,13 @@
-from sprites import *
+from princess import Princess
+from orc import Orc
+from golem import Golem
+from black_golem import BlackGolem
+from white_golem import WhiteGolem
+from character import Character
 from persistence import Map, Highscore
+import pygame
+from pygame.locals import *
+from settings import *
 
 
 class GameModel:
@@ -70,6 +78,12 @@ class GameModel:
                     self.__princess = Princess(col, row, self)
                 if tile == 'O':
                     Orc(col, row, self)
+                if tile == 'G':
+                    Golem(col, row, self)
+                if tile == 'B':
+                    BlackGolem(col, row, self)   
+                if tile == 'W':
+                    WhiteGolem(col, row, self)
                 if tile == 'C':
                     Coin(col, row, self)
                 if tile == 'D':
@@ -79,7 +93,7 @@ class GameModel:
         self.__all_sprites.update()
         #Abaixa a tela caso passe de uma certa altura e mata os sprites que não aparecem mais
 
-        if self.__princess.rect.bottom >= SCREEN_HEIGHT /3 and self.__door_tile.rect.bottom - self.__princess.rect.bottom > TILESIZE*6:
+        if self.__princess.rect.bottom >= SCREEN_HEIGHT /3 and self.__door_tile.rect.bottom - self.__princess.rect.bottom > TILESIZE/2:
             self.__princess.pos.y -= abs(self.__princess.vel.y)
             for tile in self.__tiles:
                 tile.rect.y -= abs(self.__princess.vel.y)
@@ -89,4 +103,3 @@ class GameModel:
     def end(self):
         for sprite in self.__all_sprites:
             sprite.kill()
-

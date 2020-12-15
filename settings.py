@@ -3,6 +3,7 @@ from os import path
 # Arquivo para guardar variaveis constantes
 GAME_FOLDER = path.dirname(__file__)
 IMG_FOLDER = path.join(GAME_FOLDER, 'images')
+SOUNDS_FOLDER = path.join(GAME_FOLDER, 'sounds')
 
 # Cores RGB
 BLUE = (0, 0, 255)
@@ -35,7 +36,8 @@ SCREEN_HEIGHT = 768
 PRINCESS_FOLDER = path.join(IMG_FOLDER, 'princess/')
 ORC_FOLDER = path.join(IMG_FOLDER, 'orc/')
 GOLEM_FOLDER = path.join(IMG_FOLDER, 'golem/')
-GOLEM_IMG = 'enemy_2.png'
+WHITE_GOLEM_FOLDER = path.join(IMG_FOLDER, 'white_golem/')
+BLACK_GOLEM_FOLDER = path.join(IMG_FOLDER, 'black_golem/')
 UNBREAKABLE_IMG = 'unbreakable_tile.png'
 BREAKABLE_IMG = 'breakable_tile.png'
 BG_IMAGE = 'background.png'
@@ -46,6 +48,9 @@ COIN_TILE_IMG = 'coin_tile.png'
 DOOR_TILE_IMG = 'end_door.png'
 MAP_FILE = 'map.txt'
 HS_FILE = 'highscore.txt'
+BACKGROUND_SOUND = 'bensound-creepy.ogg'
+PRINCESS_HITTING = 'knifesharpener2.ogg'
+ORC_SOUND = 'Male-Zombie-Roar.ogg'
 
 # Ordem da layer de cada sprite
 PRINCESS_LAYER = 3
@@ -55,11 +60,11 @@ TILE_LAYER = 1
 # Variaveis que compoem a fisica da princesa
 PLAYER_ACC = 2
 PLAYER_FRICTION = -0.15
-PLAYER_GRAV = 0.8
+PLAYER_GRAV = 2.5
 
 ENEMY_ACC = 1
 ENEMY_FRICTION = -0.15
-ENEMY_GRAV= 0.8
+ENEMY_GRAV= 10
 
 ATTACK_LIFETIME = 300
 ATTACK_RATE = 400
