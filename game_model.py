@@ -3,7 +3,7 @@ from sprites.enemy import Enemy
 from sprites.orc import Orc
 from sprites.golem import Golem
 from sprites.black_golem import BlackGolem
-from sprites.white_golem import WhiteGolem
+from sprites.white_golem.white_golem import WhiteGolem
 from sprites.tiles.tiles import *
 from persistence import Map, Highscore
 import pygame
