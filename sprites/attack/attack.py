@@ -5,7 +5,7 @@ import pygame
 from pygame import mixer
 from pygame.locals import *
 from settings import *
-from sprites.explosion import Explosion
+from sprites.explosion.explosion import Explosion
 
 
 class Attack(pygame.sprite.Sprite):
@@ -42,8 +42,8 @@ class Attack(pygame.sprite.Sprite):
             princesshit.play()
             
             # spawna a explosão 
-            #expl = Explosion(hit.rect.center, 'lg')
-            #self.__model.all_sprites.add(expl)
+            expl = Explosion(hit.rect.center, 'lg')
+            self.__model.all_sprites.add(expl)
 
             # aumenta o score
             self.__model.score += 10
@@ -58,8 +58,8 @@ class Attack(pygame.sprite.Sprite):
             #coin_sound.play()
 
             # spawna a explosão 
-            #expl = Explosion(broke.rect.center, 'sm')
-            #self.__model.all_sprites.add(expl)
+            expl = Explosion(broke.rect.center, 'sm')
+            self.__model.all_sprites.add(expl)
 
             # adiciona ao score
             self.__model.score += 5
