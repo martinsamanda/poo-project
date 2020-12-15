@@ -5,7 +5,7 @@ import pygame
 from pygame import mixer
 from pygame.locals import *
 from settings import *
-from attack import Attack
+from sprites.attack import Attack
 
 # adicionando os arquivos de som
 vec = pygame.math.Vector2

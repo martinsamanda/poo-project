@@ -4,7 +4,6 @@ from os import path, listdir
 import pygame
 from pygame.locals import *
 from settings import *
-from attack import Attack
 
 
 class Tile(ABC, pygame.sprite.Sprite):

@@ -4,7 +4,6 @@ from sprites.character import Character
 from os import path, listdir
 from pygame.locals import *
 from settings import *
-from attack import Attack
 vec = pygame.math.Vector2
 
 
