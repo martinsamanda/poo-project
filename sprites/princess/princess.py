@@ -9,8 +9,8 @@ from attack import Attack
 
 # adicionando os arquivos de som
 vec = pygame.math.Vector2
-pygame.mixer.init()
-princess_atack = mixer.Sound(path.join('sprites', 'princess', 'sounds', 'atack.wav'))
+#pygame.mixer.init()
+#princess_atack = mixer.Sound(path.join('sprites', 'princess', 'sounds', 'atack.wav'))
 
 
 class Princess(Character):
@@ -107,7 +107,7 @@ class Princess(Character):
         
         now = pygame.time.get_ticks()
         if now - self.last_attack > ATTACK_RATE:
-            princess_atack.play()
+            #princess_atack.play()
             self.last_attack = now
             self.attacking = True
             dir = self.pos + vec(x, y)
