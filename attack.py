@@ -42,8 +42,8 @@ class Attack(pygame.sprite.Sprite):
             princesshit.play()
             
             # spawna a explosão 
-            expl = Explosion(hit.rect.center, 'lg')
-            self.__model.all_sprites.add(expl)
+            #expl = Explosion(hit.rect.center, 'lg')
+            #self.__model.all_sprites.add(expl)
 
             # aumenta o score
             self.__model.score += 10
@@ -54,12 +54,12 @@ class Attack(pygame.sprite.Sprite):
         broken_coin_tiles = pygame.sprite.spritecollide(self, self.__model.coin_tiles, True)
         for broke in broken_coin_tiles:
             # toca o som
-            coin_sound = mixer.Sound(path.join('sprites', 'tiles', 'sounds', 'coin.wav'))
-            coin_sound.play()
+            #coin_sound = mixer.Sound(path.join('sprites', 'tiles', 'sounds', 'coin.wav'))
+            #coin_sound.play()
 
             # spawna a explosão 
-            expl = Explosion(broke.rect.center, 'sm')
-            self.__model.all_sprites.add(expl)
+            #expl = Explosion(broke.rect.center, 'sm')
+            #self.__model.all_sprites.add(expl)
 
             # adiciona ao score
             self.__model.score += 5
