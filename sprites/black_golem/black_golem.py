@@ -9,6 +9,6 @@ vec = pygame.math.Vector2
 
 class BlackGolem(Enemy):
     def __init__(self, position_x, position_y, model):
-        Character.__init__(self, BLACK_GOLEM_FOLDER, 30, 64, position_x * TILESIZE+10, position_y * TILESIZE, model, ENEMY_LAYER)
+        Character.__init__(self, path.join('sprites/', 'black_golem/', 'images/'), 30, 64, position_x * TILESIZE+10, position_y * TILESIZE, model, ENEMY_LAYER)
         self.direction = 1
         self.model.enemies.add(self)
