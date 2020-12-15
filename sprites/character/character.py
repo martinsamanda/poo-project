@@ -57,9 +57,10 @@ class Character(ABC, pygame.sprite.Sprite):
             self.__image = pygame.transform.flip(self.__image, True, False)
         self.__rect = self.__image.get_rect()
 
+    # a principio só a princesa usa
     def load_images(self):
         for frame_type in self.frames:
-            for file in listdir(path.join(IMG_FOLDER, f'{self.__character_folder}/{frame_type}')):
+            for file in listdir(path.join(f'{self.__character_folder}/{frame_type}')):
                 self.frames[frame_type].append(f'{frame_type}/{file}')
 
     def pick_frame(self, frame_type, frame_per_sec):
