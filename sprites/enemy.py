@@ -1,4 +1,4 @@
-from sprites.character.character import Character
+from sprites.character import Character
 from os import path, listdir
 
 import pygame

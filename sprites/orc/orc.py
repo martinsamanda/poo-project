@@ -1,6 +1,6 @@
 import pygame
 from sprites.enemy import Enemy
-from sprites.character.character import Character
+from sprites.character import Character
 from os import path, listdir
 from pygame.locals import *
 from settings import *

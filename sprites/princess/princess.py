@@ -5,7 +5,7 @@ from pygame import mixer
 from pygame.locals import *
 from settings import *
 
-from sprites.character.character import Character
+from sprites.character import Character
 from sprites.attack.attack import Attack
 vec = pygame.math.Vector2
 
