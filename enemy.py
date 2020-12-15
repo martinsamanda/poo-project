@@ -1,15 +1,13 @@
 from character import Character
 from os import path, listdir
-
 import pygame
 from pygame.locals import *
 from settings import *
-from attack import Attack
 vec = pygame.math.Vector2
 
 class Enemy(Character):
-    def __init__(self, position_x, position_y, model):
-        #super().__init__(ORC_FOLDER, 30, 90, position_x * TILESIZE, position_y * TILESIZE, model, ENEMY_LAYER)
+    def __init__(self, character_folder, width, height, position_x, position_y, model, layer):
+        super().__init__(character_folder, width, height, position_x, position_y, model, layer)
         pass
 
     def update(self):

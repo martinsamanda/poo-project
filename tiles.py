@@ -42,9 +42,9 @@ class Breakable(Tile):
         self.model.destructive_tiles.add(self)
 
 
-class Coin(Tile):
+class Coin(Breakable):
     def __init__(self, position_x, position_y, model):
-        super().__init__(COIN_TILE_IMG, position_x, position_y, model)
+        Tile.__init__(self,COIN_TILE_IMG, position_x, position_y, model)
         #Igual o breakable porém um dia, se tudo der certo, vai aumentar os pontos
         #update: esse dia chegou, funcionou
         self.model.coin_tiles.add(self)
