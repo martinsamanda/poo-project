@@ -45,6 +45,7 @@ class Princess(Character):
 
         #Aplica fricção
         self.acc.x += self.vel.x * PLAYER_FRICTION
+        
         #Equações de velocidade e deslocamento
         self.vel += self.acc
         self.pos += self.vel + 0.5 * self.acc

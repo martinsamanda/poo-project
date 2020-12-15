@@ -10,7 +10,7 @@ class Tile(ABC, pygame.sprite.Sprite):
     def __init__(self, image_link, position_x, position_y, model):
         super().__init__()
         self._layer = TILE_LAYER
-        self.__image = pygame.image.load(path.join(IMG_FOLDER, image_link)).convert_alpha()
+        self.__image = pygame.image.load(path.join('sprites/', 'tiles/', 'images/', image_link)).convert_alpha()
         self.__image = pygame.transform.scale(self.__image, (TILESIZE, TILESIZE))
         self.__rect = self.__image.get_rect()
         self.__rect.x = position_x * TILESIZE   
